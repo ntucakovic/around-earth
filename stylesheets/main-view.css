@@ -1,0 +1,45 @@
+/* line 1, ../sass/main-view.scss */
+body {
+  margin: 0;
+  overflow: hidden;
+}
+
+/* line 6, ../sass/main-view.scss */
+#toolbar-right-toggle {
+  position: absolute;
+  left: -25px;
+  top: 20px;
+  display: block;
+  width: 50px;
+  height: 50px;
+  background-color: #ff0000;
+}
+
+/* line 16, ../sass/main-view.scss */
+#toolbar-right {
+  background-color: #304a5e;
+  position: absolute;
+  width: 270px;
+  height: 300px;
+  right: -270px;
+  top: 0;
+}
+
+/* line 27, ../sass/main-view.scss */
+#user-view-compass #station {
+  background-color: #ff0000;
+  width: 5px;
+  height: 5px;
+  transform-origin: 3px 52px;
+  transform: rotate(7deg);
+  position: absolute;
+  left: 45px;
+}
+/* line 37, ../sass/main-view.scss */
+#user-view-compass #compass-circle {
+  background-color: #00ff00;
+  width: 100px;
+  height: 100px;
+  position: relative;
+  border-radius: 50px;
+}

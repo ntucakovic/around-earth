@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8" />
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+
+    <script type="text/javascript" src="javascripts/bootstrap.min.js"></script>
+
+    <script type="text/javascript" src="javascripts/application/mapStyles.js"></script>
+    <script type="text/javascript" src="javascripts/application/map.js"></script>
+    <link rel="stylesheet" type="text/css" href="stylesheets/styles.css">
+
+</head>
+<body>
+    <div id="map"></div>
+    <aside id="toolbar-right">
+      <a href="#" id="toolbar-right-toggle"></a>
+
+
+
+      <table>
+        <tr>
+          <td>Now Tracking ISS (Zarya)</td>
+        </tr>
+
+        <tr>
+          <td>Latitude</td>
+          <td id="label-latitude"></td>
+        </tr>
+
+        <tr>
+          <td>Longitude</td>
+          <td id="label-longitude"></td>
+        </tr>
+
+        <tr>
+          <td>Altitude</td>
+          <td id="label-altitude"></td>
+        </tr>
+
+        <tr>
+          <td>Orbital Elements</td>
+        </tr>
+
+        <tr>
+          <td>Epoch</td>
+          <td id="label-epoch"></td>
+        </tr>
+
+        <tr>
+          <td>RAAN</td>
+          <td id="label-raan"></td>
+        </tr>
+
+        <tr>
+          <td>ARGP</td>
+          <td id="label-argp"></td>
+        </tr>
+
+        <tr>
+          <td>ecce</td>
+          <td id="label-ecce"></td>
+        </tr>
+
+        <tr>
+          <td>Inclination</td>
+          <td id="label-inclination"></td>
+        </tr>
+
+        <tr>
+          <td>mean motion</td>
+          <td id="label-mean-motion"></td>
+        </tr>
+
+        <tr>
+          <td>ma</td>
+          <td id="label-ma"></td>
+        </tr>
+
+        <tr>
+          <td>Drag</td>
+          <td id="label-drag"></td>
+        </tr>
+
+      </table>
+
+
+
+      <div id="user-view-compass">
+
+        <div id="compass-circle">
+          <div id="station"></div>
+
+        </div>
+
+      </div>
+
+
+      <svg width="110" height="110" id="user-view-compass">
+        <line x1="0" y1="5" x2="110" y2="5" style="stroke:rgb(255,0,0);stroke-width:2" />
+      </svg>
+
+
+
+
+
+
+    </aside>
+</body>
+</html>
