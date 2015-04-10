@@ -71,6 +71,20 @@ App.initializeMap = function(data) {
 
     App.map = new google.maps.Map(document.getElementById("map"), options);
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     App.stationMarker = new google.maps.Marker({
       position: statopmPosition,
       icon: 'assets/station.png',
@@ -120,6 +134,31 @@ App.updateStationPosition = function(position) {
     }
   }
 
+
+
+
+
+ var date = new Date();
+
+dno = new DayNightOverlay({
+  map: App.map,
+  fillColor: 'rgba(255,0,0,0.5)',
+  date: new Date(Date.UTC(2013,date.getMonth(),date.getDate()))
+});
+
+
+
+    var hour = date.getHours();
+
+    var mins = (hour %1 *60).toFixed(0);
+
+
+    time = new Date(Date.UTC(2013,date.getMonth(),date.getDate(),hour, mins));
+    dno.setDate(time);
+
+
+
+
   $.ajax({
     data: {
       user_latitude: position.latitude,
@@ -163,7 +202,11 @@ App.updateRightPanel = function(data) {
   $('#label-ma').html(data.tle.mean_anomaly);
   $('#label-drag').html(data.tle.bstar);
 
-  var rotation = data.user_view.azimuth;
+  var compass_rotation = data.user_view.azimuth;
+  var elevation = data.user_view.elevation * -1;
 
-  $('#user-view-compass #station').css('transform', 'rotate(' + rotation + 'deg)');
+  console.log(compass_rotation, data.user_view.elevation);
+
+  $('#user-view-compass #station').css('transform', 'rotate(' + compass_rotation + 'deg)');
+  $('#user-view-elevation #elevation').attr('transform', 'rotate(' + elevation + ' 0 55)');
 }
