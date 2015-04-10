@@ -71,19 +71,11 @@ App.initializeMap = function(data) {
 
     App.map = new google.maps.Map(document.getElementById("map"), options);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+    App.DayNightTerminator = new DayNightOverlay({
+      map: App.map,
+      fillColor: 'rgba(0,0,0,0.5)',
+      date: new Date(Date.UTC())
+    });
 
     App.stationMarker = new google.maps.Marker({
       position: statopmPosition,
@@ -134,31 +126,6 @@ App.updateStationPosition = function(position) {
     }
   }
 
-
-
-
-
- var date = new Date();
-
-dno = new DayNightOverlay({
-  map: App.map,
-  fillColor: 'rgba(255,0,0,0.5)',
-  date: new Date(Date.UTC(2013,date.getMonth(),date.getDate()))
-});
-
-
-
-    var hour = date.getHours();
-
-    var mins = (hour %1 *60).toFixed(0);
-
-
-    time = new Date(Date.UTC(2013,date.getMonth(),date.getDate(),hour, mins));
-    dno.setDate(time);
-
-
-
-
   $.ajax({
     data: {
       user_latitude: position.latitude,
@@ -176,6 +143,8 @@ dno = new DayNightOverlay({
         var newLatLng = new google.maps.LatLng(latitude, longitude);
         App.stationMarker.setPosition(newLatLng);
         App.updateRightPanel(data);
+        var dateTime = new Date(Date.UTC())
+        App.DayNightTerminator.setDate(dateTime);
       } else {
         App.initializeMap(data);
         var interval = 1000 * 5; // where X is your every X seconds
