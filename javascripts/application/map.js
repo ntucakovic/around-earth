@@ -12,7 +12,6 @@ App.apiEndpoint = 'http://dev.byteout.com/around-earth/backend/';
 
     var height = $(document).height();
     var width = $(document).width();
-    $('#map').attr('style', 'width:' + width + 'px; height:' + height + 'px;');
 
   if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(function(position){
@@ -34,7 +33,6 @@ App.apiEndpoint = 'http://dev.byteout.com/around-earth/backend/';
         App.updateStationPosition(position);
   }
 
-  $('#toolbar-right').height(height);
   if(App.toolbarRightOpen) {
     $('#toolbar-right').css('right', '0');
   } else {
