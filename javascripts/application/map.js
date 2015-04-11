@@ -184,5 +184,20 @@ var App = {
                 App.repositionToolbarRight();
             }
         });
+
+        $('#toolbar-right-toggle').click(function (e) {
+            e.preventDefault();
+            if (App.toolbarRightOpen) {
+                $('#toolbar-right').animate({'right': '0'});
+                App.toolbarRightOpen = false;
+            } else {
+                $('#toolbar-right').animate({'right': '-270px'});
+                App.toolbarRightOpen = true;
+            }
+        });
+
+        $('[data-toggle="tooltip"]').tooltip();
+        $('[data-toggle="popover"]').popover();
+
     });
 })(jQuery)
