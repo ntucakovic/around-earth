@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
+    <meta charset="utf-8"/>
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
     <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
     <script type="text/javascript" src="javascripts/bootstrap.min.js"></script>
@@ -11,108 +11,111 @@
     <link rel="stylesheet" type="text/css" href="stylesheets/styles.css">
 </head>
 <body>
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-navbar">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-            </div>
-
-            <div class="collapse navbar-collapse" id="main-navbar">
-                <ul class="nav navbar-nav">
-                    <li class="active"><a href="#">Home</a></li>
-                    <li><a href="#">Space News</a></li>
-                    <li><a href="#">Contact</a></li>
-                </ul>
-                <p class="navbar-text navbar-right">Made with <span class="glyphicon glyphicon-heart"></span> for Space App challenge</p>
-            </div>
-        </div>
-    </nav>
+<nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container-fluid">
-        <div class="row">
-            <div id="map" class="main"></div>
-            <aside id="toolbar-right" class="sidebar--right col-sm-3 col-md-2 sidebar active">
-                <a href="#" id="toolbar-right-toggle" class="sidebar-toggle sidebar-toggle--right glyphicon glyphicon-menu-hamburger"></a>
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
 
-                <section class="sidebar__inner">
-                    <table class="table table-striped table-hover">
-                        <tbody>
-                        <tr>
-                            <td colspan="2">Now Tracking ISS (Zarya)</td>
-                        </tr>
-                        <tr>
-                            <td>Latitude</td>
-                            <td id="label-latitude"></td>
-                        </tr>
-                        <tr>
-                            <td>Longitude</td>
-                            <td id="label-longitude"></td>
-                        </tr>
-                        <tr>
-                            <td>Altitude</td>
-                            <td id="label-altitude"></td>
-                        </tr>
-                        <tr>
-                            <td colspan="2">Orbital Elements</td>
-                        </tr>
-                        <tr>
-                            <td>Epoch</td>
-                            <td id="label-epoch"></td>
-                        </tr>
-                        <tr>
-                            <td>RAAN</td>
-                            <td id="label-raan"></td>
-                        </tr>
-                        <tr>
-                            <td>ARGP</td>
-                            <td id="label-argp"></td>
-                        </tr>
-                        <tr>
-                            <td>ecce</td>
-                            <td id="label-ecce"></td>
-                        </tr>
-                        <tr>
-                            <td>Inclination</td>
-                            <td id="label-inclination"></td>
-                        </tr>
-                        <tr>
-                            <td>mean motion</td>
-                            <td id="label-mean-motion"></td>
-                        </tr>
-                        <tr>
-                            <td>ma</td>
-                            <td id="label-ma"></td>
-                        </tr>
-                        <tr>
-                            <td>Drag</td>
-                            <td id="label-drag"></td>
-                        </tr>
-                        </tbody>
-                    </table>
-
-                    <div id="user-view-compass">
-                      <div id="compass-circle">
-                        <div id="station"></div>
-                      </div>
-                    </div>
-
-              <!--       <svg width="110" height="110" id="user-view-compass">
-                      <circle cx="50" cy="50" r="50" stroke="black" stroke-width="3" fill="red" />
-                      <image id="station" xlink:href="assets/station.png" x="0" y="0" height="12px" width="12px" transform="rotate(-90 0 0)"/>
-                    </svg> -->
-
-
-                    <svg width="110" height="110" id="user-view-elevation">
-                      <line id="elevation" x1="0" y1="55" x2="110" y2="55" style="stroke:rgb(255,0,0); stroke-width:2" transform="rotate(0 0 55)"/>
-                      <line id="horizon" x1="0" y1="55" x2="110" y2="55" style="stroke:rgb(255,0,0); stroke-width:2" />
-                    </svg>
-                </section>
-            </aside>
+        <div class="collapse navbar-collapse" id="main-navbar">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#">Home</a></li>
+                <li><a href="#">Space News</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+            <p class="navbar-text navbar-right">Made with <span class="glyphicon glyphicon-heart"></span> for Space App
+                challenge</p>
         </div>
     </div>
+</nav>
+<div class="container-fluid">
+    <div class="row">
+        <div id="map" class="main"></div>
+        <aside id="toolbar-right" class="sidebar--right col-sm-3 col-md-2 sidebar active">
+            <a href="#" id="toolbar-right-toggle"
+               class="sidebar-toggle sidebar-toggle--right glyphicon glyphicon-menu-hamburger"></a>
+
+            <section class="sidebar__inner">
+                <table class="table table-striped table-hover">
+                    <tbody>
+                    <tr>
+                        <td colspan="2">Now Tracking ISS (Zarya)</td>
+                    </tr>
+                    <tr>
+                        <td>Latitude</td>
+                        <td id="label-latitude"></td>
+                    </tr>
+                    <tr>
+                        <td>Longitude</td>
+                        <td id="label-longitude"></td>
+                    </tr>
+                    <tr>
+                        <td>Altitude</td>
+                        <td id="label-altitude"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">Orbital Elements</td>
+                    </tr>
+                    <tr>
+                        <td>Epoch</td>
+                        <td id="label-epoch"></td>
+                    </tr>
+                    <tr>
+                        <td>RAAN</td>
+                        <td id="label-raan"></td>
+                    </tr>
+                    <tr>
+                        <td>ARGP</td>
+                        <td id="label-argp"></td>
+                    </tr>
+                    <tr>
+                        <td>ecce</td>
+                        <td id="label-ecce"></td>
+                    </tr>
+                    <tr>
+                        <td>Inclination</td>
+                        <td id="label-inclination"></td>
+                    </tr>
+                    <tr>
+                        <td>mean motion</td>
+                        <td id="label-mean-motion"></td>
+                    </tr>
+                    <tr>
+                        <td>ma</td>
+                        <td id="label-ma"></td>
+                    </tr>
+                    <tr>
+                        <td>Drag</td>
+                        <td id="label-drag"></td>
+                    </tr>
+                    </tbody>
+                </table>
+
+                <div id="user-view-compass">
+                    <div id="compass-circle">
+                        <div id="station"></div>
+                    </div>
+                </div>
+
+                <!--       <svg width="110" height="110" id="user-view-compass">
+                        <circle cx="50" cy="50" r="50" stroke="black" stroke-width="3" fill="red" />
+                        <image id="station" xlink:href="assets/station.png" x="0" y="0" height="12px" width="12px" transform="rotate(-90 0 0)"/>
+                      </svg> -->
+
+
+                <svg width="110" height="110" id="user-view-elevation">
+                    <line id="elevation" x1="0" y1="55" x2="110" y2="55" style="stroke:rgb(255,0,0); stroke-width:2"
+                          transform="rotate(0 0 55)"/>
+                    <line id="horizon" x1="0" y1="55" x2="110" y2="55" style="stroke:rgb(255,0,0); stroke-width:2"/>
+                </svg>
+            </section>
+        </aside>
+    </div>
+</div>
 </body>
 </html>
