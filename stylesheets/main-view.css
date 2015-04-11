@@ -91,8 +91,11 @@ body {
 #user-view-compass {
   position: relative;
   color: #B8F0B8;
+  height: 110px;
+  width: 110px;
+  display: inline-block;
 }
-/* line 79, ../sass/main-view.scss */
+/* line 82, ../sass/main-view.scss */
 #user-view-compass #station {
   transform-origin: 7px 47px;
   transform: rotate(7deg);
@@ -105,7 +108,7 @@ body {
   border-right: 7px solid transparent;
   border-bottom: 7px solid #B8F0B8;
 }
-/* line 92, ../sass/main-view.scss */
+/* line 95, ../sass/main-view.scss */
 #user-view-compass #compass-circle {
   background-color: #002F4C;
   border: 10px solid #456A87;
@@ -114,38 +117,87 @@ body {
   position: relative;
   border-radius: 50px;
 }
-/* line 101, ../sass/main-view.scss */
+/* line 104, ../sass/main-view.scss */
 #user-view-compass #label-azimuth {
   position: absolute;
   top: 26px;
-  left: 23px;
+  width: 45px;
+  left: 22px;
   font-size: 1.5em;
   text-align: center;
 }
-/* line 109, ../sass/main-view.scss */
+/* line 113, ../sass/main-view.scss */
 #user-view-compass .north {
   font-family: Times New Romain;
   position: absolute;
   left: 37px;
 }
-/* line 115, ../sass/main-view.scss */
+/* line 119, ../sass/main-view.scss */
 #user-view-compass .south {
   font-family: Times New Romain;
   position: absolute;
   left: 37px;
   bottom: -8px;
 }
-/* line 122, ../sass/main-view.scss */
+/* line 126, ../sass/main-view.scss */
 #user-view-compass .east {
   font-family: Times New Romain;
   position: absolute;
   right: 3px;
   top: 32px;
 }
-/* line 129, ../sass/main-view.scss */
+/* line 133, ../sass/main-view.scss */
 #user-view-compass .west {
   font-family: Times New Romain;
   position: absolute;
   top: 32px;
   left: 3px;
+}
+
+/* line 142, ../sass/main-view.scss */
+#user-view-elevation {
+  position: relative;
+  display: inline-block;
+  top: -116px;
+  left: 57px;
+}
+/* line 148, ../sass/main-view.scss */
+#user-view-elevation #label-elvation {
+  color: #B8F0B8;
+  position: absolute;
+  top: 14px;
+  width: 41px;
+  left: 8px;
+  font-size: 1.5em;
+  text-align: center;
+}
+/* line 158, ../sass/main-view.scss */
+#user-view-elevation #circle {
+  height: 55px;
+  width: 55px;
+  background: #002F4C;
+  border-radius: 55px;
+  position: absolute;
+  top: 27px;
+  z-index: 99999999;
+  position: absolute;
+}
+/* line 169, ../sass/main-view.scss */
+#user-view-elevation svg {
+  margin-left: 27px;
+  z-index: 10;
+  position: absolute;
+}
+/* line 175, ../sass/main-view.scss */
+#user-view-elevation #arcs div {
+  border: 20px solid #456A87;
+  display: inline-block;
+  min-width: -5em;
+  min-height: 108px;
+  padding: 32px;
+  border-radius: 60%;
+  border-top-color: transparent;
+  border-bottom-color: transparent;
+  position: absolute;
+  left: -25px;
 }

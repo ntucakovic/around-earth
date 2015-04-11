@@ -75,6 +75,9 @@ body {
 #user-view-compass {
   position: relative;
   color: #B8F0B8;
+  height: 110px;
+  width: 110px;
+  display: inline-block;
 
   #station {
     transform-origin: 7px 47px;
@@ -101,7 +104,8 @@ body {
   #label-azimuth {
     position: absolute;
     top: 26px;
-    left: 23px;
+    width: 45px;
+    left: 22px;
     font-size: 1.5em;
     text-align: center;
   }
@@ -134,3 +138,52 @@ body {
   }
 
 }
+
+#user-view-elevation {
+  position: relative;
+  display: inline-block;
+  top: -116px;
+  left: 57px;
+
+  #label-elvation {
+    color: #B8F0B8;
+    position: absolute;
+    top: 14px;
+    width: 41px;
+    left: 8px;
+    font-size: 1.5em;
+    text-align: center;
+  }
+
+  #circle {
+    height: 55px;
+    width: 55px;
+    background: #002F4C;
+    border-radius: 55px;
+    position: absolute;
+    top: 27px;
+    z-index: 99999999;
+    position: absolute;
+  }
+
+  svg {
+    margin-left: 27px;
+    z-index: 10;
+    position: absolute;
+  }
+
+  #arcs div {
+    border: 20px solid #456A87;
+    display: inline-block;
+    min-width: -5em;
+    min-height: 108px;
+    padding: 32px;
+    border-radius: 60%;
+    border-top-color: transparent;
+    border-bottom-color: transparent;
+    position: absolute;
+    left: -25px;
+}
+
+}
+
