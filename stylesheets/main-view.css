@@ -7,52 +7,71 @@ body {
 
 /* line 7, ../sass/main-view.scss */
 body {
+  padding-top: 50px;
+}
+
+/* line 11, ../sass/main-view.scss */
+body {
   margin: 0;
   overflow: hidden;
 }
 
-/* line 12, ../sass/main-view.scss */
+/* line 16, ../sass/main-view.scss */
+.container-fluid {
+  position: relative;
+}
+
+/* line 20, ../sass/main-view.scss */
 #map {
   width: 100%;
+}
+
+/* line 24, ../sass/main-view.scss */
+.container-fluid,
+.row,
+#map {
   height: 100%;
 }
 
-/* line 17, ../sass/main-view.scss */
-.toolbar-toggle {
+/* line 30, ../sass/main-view.scss */
+.sidebar-toggle {
   display: block;
   width: 50px;
   height: 50px;
   background-color: #ff0000;
 }
 
-/* line 24, ../sass/main-view.scss */
-.toolbar-toggle--right {
+/* line 37, ../sass/main-view.scss */
+.sidebar-toggle--right {
   position: absolute;
   left: -25px;
   top: 20px;
 }
 
-/* line 30, ../sass/main-view.scss */
-.toolbar {
+/* line 43, ../sass/main-view.scss */
+.sidebar {
   background-color: #f9f9f9;
 }
 
-/* line 34, ../sass/main-view.scss */
-.toolbar--right {
+/* line 47, ../sass/main-view.scss */
+.sidebar--right {
   position: absolute;
-  right: -270px;
   top: 0;
-  width: 270px;
   height: 100%;
 }
 
-/* line 42, ../sass/main-view.scss */
-.toolbar__inner {
+/* line 53, ../sass/main-view.scss */
+.sidebar--right.active {
+  right: 0;
+}
+
+/* line 57, ../sass/main-view.scss */
+.sidebar__inner {
   height: 100%;
   overflow: auto;
 }
 
-/* line 49, ../sass/main-view.scss */
+/* line 64, ../sass/main-view.scss */
 #user-view-compass #station {
   background-color: #ff0000;
   width: 5px;
@@ -62,7 +81,7 @@ body {
   position: absolute;
   left: 45px;
 }
-/* line 59, ../sass/main-view.scss */
+/* line 74, ../sass/main-view.scss */
 #user-view-compass #compass-circle {
   background-color: #00ff00;
   width: 100px;

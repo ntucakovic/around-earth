@@ -33,11 +33,20 @@ App.apiEndpoint = 'http://dev.byteout.com/around-earth/backend/';
         App.updateStationPosition(position);
   }
 
-  if(App.toolbarRightOpen) {
-    $('#toolbar-right').css('right', '0');
+  if (App.toolbarRightOpen) {
+      $('#toolbar-right').addClass('active');
   } else {
-    $('#toolbar-right').css('right', '-270');
+      $('#toolbar-right').removeClass('active');
   }
+
+  $('#toolbar-right-toggle').click(App.toggleSidebar);
+
+  $(window).resize(function() {
+        if (!App.toolbarRightOpen) {
+            App.repositionToolbarRight();
+        }
+    });
+
   $('#toolbar-right-toggle').click(function(e){
       e.preventDefault();
       if(App.toolbarRightOpen) {
@@ -52,7 +61,25 @@ App.apiEndpoint = 'http://dev.byteout.com/around-earth/backend/';
   });
 })(jQuery)
 
+App.toggleSidebar = function() {
+    var $sidebar = $('#toolbar-right'),
+        width = $sidebar.outerWidth();
 
+    if ($sidebar.is('.active')) {
+        $sidebar.removeClass('active').animate({'right': -width}, 300);
+        App.toolbarRightOpen = false;
+    } else {
+        $sidebar.addClass('active').animate({'right': 0}, 200);
+        App.toolbarRightOpen = true;
+    }
+}
+
+App.repositionToolbarRight = function() {
+    var $sidebar = $('#toolbar-right'),
+        width = $sidebar.outerWidth();
+
+    $sidebar.css('right', -width);
+}
 
 App.initializeMap = function(data) {
     var latitude = parseFloat(data.position.latitude);
