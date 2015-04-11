@@ -40,8 +40,16 @@ body {
 
 .sidebar-toggle--right {
   position: absolute;
-  left: -25px;
+  left: -30px;
   top: 20px;
+}
+
+.navbar-message {
+  margin-right: 15px;
+}
+
+.icon-heart {
+  color: tomato;
 }
 
 .sidebar {
