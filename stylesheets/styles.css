@@ -370,8 +370,8 @@ th {
 }
 @font-face {
   font-family: 'Glyphicons Halflings';
-  src: url(/fonts/bootstrap/glyphicons-halflings-regular.eot?1428766894);
-  src: url(/fonts/bootstrap/glyphicons-halflings-regular.eot?&1428766894#iefix) format("embedded-opentype"), url(/fonts/bootstrap/glyphicons-halflings-regular.woff2?1428766894) format("woff2"), url(/fonts/bootstrap/glyphicons-halflings-regular.woff?1428766894) format("woff"), url(/fonts/bootstrap/glyphicons-halflings-regular.ttf?1428766894) format("truetype"), url(/fonts/bootstrap/glyphicons-halflings-regular.svg?1428766894#glyphicons_halflingsregular) format("svg");
+  src: url(font-path("bootstrap/glyphicons-halflings-regular.eot"));
+  src: url(font-path("bootstrap/glyphicons-halflings-regular.eot?#iefix")) format("embedded-opentype"), url(font-path("bootstrap/glyphicons-halflings-regular.woff2")) format("woff2"), url(font-path("bootstrap/glyphicons-halflings-regular.woff")) format("woff"), url(font-path("bootstrap/glyphicons-halflings-regular.ttf")) format("truetype"), url(font-path("bootstrap/glyphicons-halflings-regular.svg#glyphicons_halflingsregular")) format("svg");
 }
 /* line 22, ../../../../../Ruby21-x64/lib/ruby/gems/2.1.0/gems/bootstrap-sass-3.3.4.1/assets/stylesheets/bootstrap/_glyphicons.scss */
 .glyphicon {
@@ -8611,9 +8611,9 @@ body {
 /* line 34, ../sass/main-view.scss */
 .sidebar-toggle {
   display: block;
-  width: 50px;
-  height: 50px;
-  background-color: #ff0000;
+  border-top: 21px solid transparent;
+  border-bottom: 20px solid transparent;
+  border-right: 30px solid #D2D2D2;
 }
 
 /* line 41, ../sass/main-view.scss */
@@ -8621,20 +8621,20 @@ body {
   position: absolute;
   left: -25px;
   top: 20px;
-  -webkit-box-shadow: -1px 0px 1px rgba(0, 0, 0, 0.6);
-  box-shadow: -1px 0px 1px rgba(0, 0, 0, 0.6);
 }
 
-/* line 48, ../sass/main-view.scss */
+/* line 47, ../sass/main-view.scss */
 .sidebar {
   background-color: #f9f9f9;
 }
 
-/* line 52, ../sass/main-view.scss */
+/* line 51, ../sass/main-view.scss */
 .sidebar--right {
   position: absolute;
   top: 0;
   height: 100%;
+  -webkit-box-shadow: -1px 0px 1px rgba(0, 0, 0, 0.6);
+  box-shadow: -1px 0px 1px rgba(0, 0, 0, 0.6);
 }
 
 /* line 58, ../sass/main-view.scss */
