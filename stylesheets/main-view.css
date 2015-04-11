@@ -1,91 +1,80 @@
-/* line 1, ../sass/main-view.scss */
-html,
-body {
-  min-height: 100%;
-  height: 100%;
-}
+/*
+Error: Undefined mixin 'box-shadow'.
+        on line 17 of C:/Program Files (x86)/Ampps/www/nasa/sass/main-view.scss, in `box-shadow'
+        from line 17 of C:/Program Files (x86)/Ampps/www/nasa/sass/main-view.scss
 
-/* line 7, ../sass/main-view.scss */
-body {
-  padding-top: 50px;
-}
+12:   margin: 0;
+13:   overflow: hidden;
+14: }
+15: 
+16: .navbar.navbar-fixed-top {
+17:   @include box-shadow(0 1px 2px rgba(0, 0, 0, 0.6));
+18: }
+19: 
+20: .container-fluid {
+21:   position: relative;
+22: }
 
-/* line 11, ../sass/main-view.scss */
-body {
-  margin: 0;
-  overflow: hidden;
-}
-
-/* line 16, ../sass/main-view.scss */
-.container-fluid {
-  position: relative;
-}
-
-/* line 20, ../sass/main-view.scss */
-#map {
-  width: 100%;
-}
-
-/* line 24, ../sass/main-view.scss */
-.container-fluid,
-.row,
-#map {
-  height: 100%;
-}
-
-/* line 30, ../sass/main-view.scss */
-.sidebar-toggle {
-  display: block;
-  width: 50px;
-  height: 50px;
-  background-color: #ff0000;
-}
-
-/* line 37, ../sass/main-view.scss */
-.sidebar-toggle--right {
-  position: absolute;
-  left: -25px;
-  top: 20px;
-}
-
-/* line 43, ../sass/main-view.scss */
-.sidebar {
-  background-color: #f9f9f9;
-}
-
-/* line 47, ../sass/main-view.scss */
-.sidebar--right {
-  position: absolute;
-  top: 0;
-  height: 100%;
-}
-
-/* line 53, ../sass/main-view.scss */
-.sidebar--right.active {
-  right: 0;
-}
-
-/* line 57, ../sass/main-view.scss */
-.sidebar__inner {
-  height: 100%;
-  overflow: auto;
-}
-
-/* line 64, ../sass/main-view.scss */
-#user-view-compass #station {
-  background-color: #ff0000;
-  width: 5px;
-  height: 5px;
-  transform-origin: 3px 52px;
-  transform: rotate(7deg);
-  position: absolute;
-  left: 45px;
-}
-/* line 74, ../sass/main-view.scss */
-#user-view-compass #compass-circle {
-  background-color: #00ff00;
-  width: 100px;
-  height: 100px;
-  position: relative;
-  border-radius: 50px;
-}
+Backtrace:
+C:/Program Files (x86)/Ampps/www/nasa/sass/main-view.scss:17:in `box-shadow'
+C:/Program Files (x86)/Ampps/www/nasa/sass/main-view.scss:17
+c:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/sass-3.4.10/lib/sass/tree/visitors/perform.rb:348:in `block in visit_mixin'
+c:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/sass-3.4.10/lib/sass/stack.rb:98:in `block in with_mixin'
+c:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/sass-3.4.10/lib/sass/stack.rb:115:in `with_frame'
+c:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/sass-3.4.10/lib/sass/stack.rb:98:in `with_mixin'
+c:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/sass-3.4.10/lib/sass/tree/visitors/perform.rb:346:in `visit_mixin'
+c:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/sass-3.4.10/lib/sass/tree/visitors/base.rb:36:in `visit'
+c:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/sass-3.4.10/lib/sass/tree/visitors/perform.rb:158:in `block in visit'
+c:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/sass-3.4.10/lib/sass/stack.rb:79:in `block in with_base'
+c:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/sass-3.4.10/lib/sass/stack.rb:115:in `with_frame'
+c:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/sass-3.4.10/lib/sass/stack.rb:79:in `with_base'
+c:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/sass-3.4.10/lib/sass/tree/visitors/perform.rb:158:in `visit'
+c:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/sass-3.4.10/lib/sass/tree/visitors/perform.rb:430:in `block (2 levels) in visit_rule'
+c:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/sass-3.4.10/lib/sass/tree/visitors/perform.rb:430:in `map'
+c:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/sass-3.4.10/lib/sass/tree/visitors/perform.rb:430:in `block in visit_rule'
+c:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/sass-3.4.10/lib/sass/tree/visitors/perform.rb:179:in `with_environment'
+c:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/sass-3.4.10/lib/sass/tree/visitors/perform.rb:428:in `visit_rule'
+c:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/sass-3.4.10/lib/sass/tree/visitors/base.rb:36:in `visit'
+c:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/sass-3.4.10/lib/sass/tree/visitors/perform.rb:158:in `block in visit'
+c:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/sass-3.4.10/lib/sass/stack.rb:79:in `block in with_base'
+c:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/sass-3.4.10/lib/sass/stack.rb:115:in `with_frame'
+c:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/sass-3.4.10/lib/sass/stack.rb:79:in `with_base'
+c:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/sass-3.4.10/lib/sass/tree/visitors/perform.rb:158:in `visit'
+c:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/sass-3.4.10/lib/sass/tree/visitors/base.rb:52:in `block in visit_children'
+c:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/sass-3.4.10/lib/sass/tree/visitors/base.rb:52:in `map'
+c:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/sass-3.4.10/lib/sass/tree/visitors/base.rb:52:in `visit_children'
+c:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/sass-3.4.10/lib/sass/tree/visitors/perform.rb:167:in `block in visit_children'
+c:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/sass-3.4.10/lib/sass/tree/visitors/perform.rb:179:in `with_environment'
+c:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/sass-3.4.10/lib/sass/tree/visitors/perform.rb:166:in `visit_children'
+c:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/sass-3.4.10/lib/sass/tree/visitors/base.rb:36:in `block in visit'
+c:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/sass-3.4.10/lib/sass/tree/visitors/perform.rb:186:in `visit_root'
+c:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/sass-3.4.10/lib/sass/tree/visitors/base.rb:36:in `visit'
+c:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/sass-3.4.10/lib/sass/tree/visitors/perform.rb:157:in `visit'
+c:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/sass-3.4.10/lib/sass/tree/visitors/perform.rb:8:in `visit'
+c:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/sass-3.4.10/lib/sass/tree/root_node.rb:36:in `css_tree'
+c:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/sass-3.4.10/lib/sass/tree/root_node.rb:20:in `render'
+c:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/sass-3.4.10/lib/sass/engine.rb:268:in `render'
+c:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/compass-import-once-1.0.5/lib/compass/import-once/engine.rb:17:in `block in render'
+c:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/compass-import-once-1.0.5/lib/compass/import-once/engine.rb:29:in `with_import_scope'
+c:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/compass-import-once-1.0.5/lib/compass/import-once/engine.rb:16:in `render'
+c:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/sass-3.4.10/lib/sass/plugin/compiler.rb:492:in `update_stylesheet'
+c:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/sass-3.4.10/lib/sass/plugin/compiler.rb:215:in `block in update_stylesheets'
+c:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/sass-3.4.10/lib/sass/plugin/compiler.rb:209:in `each'
+c:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/sass-3.4.10/lib/sass/plugin/compiler.rb:209:in `update_stylesheets'
+c:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/sass-3.4.10/lib/sass/plugin/compiler.rb:293:in `watch'
+c:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/compass-1.0.3/lib/compass/sass_compiler.rb:46:in `watch!'
+c:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/compass-1.0.3/lib/compass/commands/watch_project.rb:41:in `perform'
+c:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/compass-1.0.3/lib/compass/commands/base.rb:18:in `execute'
+c:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/compass-1.0.3/lib/compass/commands/project_base.rb:19:in `execute'
+c:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/compass-1.0.3/lib/compass/exec/sub_command_ui.rb:43:in `perform!'
+c:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/compass-1.0.3/lib/compass/exec/sub_command_ui.rb:15:in `run!'
+c:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/compass-1.0.3/bin/compass:30:in `block in <top (required)>'
+c:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/compass-1.0.3/bin/compass:44:in `call'
+c:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/compass-1.0.3/bin/compass:44:in `<top (required)>'
+c:/Ruby21-x64/bin/compass:23:in `load'
+c:/Ruby21-x64/bin/compass:23:in `<main>'
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Error: Undefined mixin 'box-shadow'.\A         on line 17 of C:/Program Files (x86)/Ampps/www/nasa/sass/main-view.scss, in `box-shadow'\A         from line 17 of C:/Program Files (x86)/Ampps/www/nasa/sass/main-view.scss\A \A 12:   margin: 0;\A 13:   overflow: hidden;\A 14: }\A 15: \A 16: .navbar.navbar-fixed-top {\A 17:   @include box-shadow(0 1px 2px rgba(0, 0, 0, 0.6));\A 18: }\A 19: \A 20: .container-fluid {\A 21:   position: relative;\A 22: }"; }

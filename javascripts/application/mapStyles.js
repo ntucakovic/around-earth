@@ -30,7 +30,7 @@ var styles = [
     stylers: [
       {
         color: '#456A87',
-        hue: '#ff0000',
+        hue: '#B8F0B8',
       }
     ]
   },
