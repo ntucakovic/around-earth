@@ -139,8 +139,7 @@ var App = {
         var compass_rotation = data.user_view.azimuth;
         var elevation = data.user_view.elevation * -1;
 
-        console.log(compass_rotation, data.user_view.elevation);
-
+        $('#user-view-compass #label-azimuth').html(parseInt(compass_rotation) + '°');
         $('#user-view-compass #station').css('transform', 'rotate(' + compass_rotation + 'deg)');
         $('#user-view-elevation #elevation').attr('transform', 'rotate(' + elevation + ' 0 55)');
     },

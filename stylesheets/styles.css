@@ -8559,8 +8559,7 @@ body {
 
 /* line 16, ../sass/main-view.scss */
 .navbar.navbar-fixed-top {
-  -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+  /* @include box-shadow(0 1px 2px rgba(0, 0, 0, 0.6)); */
 }
 
 /* line 20, ../sass/main-view.scss */
@@ -8615,8 +8614,7 @@ body {
   position: absolute;
   top: 0;
   height: 100%;
-  -webkit-box-shadow: -1px 0px 1px rgba(0, 0, 0, 0.6);
-  box-shadow: -1px 0px 1px rgba(0, 0, 0, 0.6);
+  /* @include box-shadow(-1px 0px 1px rgba(0, 0, 0, 0.6)); */
 }
 
 /* line 66, ../sass/main-view.scss */
@@ -8630,21 +8628,65 @@ body {
   overflow: auto;
 }
 
-/* line 77, ../sass/main-view.scss */
+/* line 75, ../sass/main-view.scss */
+#user-view-compass {
+  position: relative;
+  color: #B8F0B8;
+}
+/* line 79, ../sass/main-view.scss */
 #user-view-compass #station {
-  background-color: #ff0000;
-  width: 5px;
-  height: 5px;
-  transform-origin: 3px 52px;
+  transform-origin: 7px 47px;
   transform: rotate(7deg);
   position: absolute;
-  left: 45px;
+  left: 35px;
+  top: -8px;
+  width: 0;
+  height: 0;
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+  border-bottom: 7px solid #B8F0B8;
 }
-/* line 87, ../sass/main-view.scss */
+/* line 92, ../sass/main-view.scss */
 #user-view-compass #compass-circle {
-  background-color: #00ff00;
+  background-color: #002F4C;
+  border: 10px solid #456A87;
   width: 100px;
   height: 100px;
   position: relative;
   border-radius: 50px;
+}
+/* line 101, ../sass/main-view.scss */
+#user-view-compass #label-azimuth {
+  position: absolute;
+  top: 26px;
+  left: 23px;
+  font-size: 1.5em;
+  text-align: center;
+}
+/* line 109, ../sass/main-view.scss */
+#user-view-compass .north {
+  font-family: Times New Romain;
+  position: absolute;
+  left: 37px;
+}
+/* line 115, ../sass/main-view.scss */
+#user-view-compass .south {
+  font-family: Times New Romain;
+  position: absolute;
+  left: 37px;
+  bottom: -8px;
+}
+/* line 122, ../sass/main-view.scss */
+#user-view-compass .east {
+  font-family: Times New Romain;
+  position: absolute;
+  right: 3px;
+  top: 32px;
+}
+/* line 129, ../sass/main-view.scss */
+#user-view-compass .west {
+  font-family: Times New Romain;
+  position: absolute;
+  top: 32px;
+  left: 3px;
 }
