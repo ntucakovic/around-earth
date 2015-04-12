@@ -3,6 +3,7 @@ var App = {
     map: null,
     stationMarker: null,
     userMarker: null,
+    geocoder: null,
     toolbarRightOpen: true,
     mapInitialized: false,
     apiEndpoint: 'http://dev.byteout.com/around-earth/backend/',
@@ -32,6 +33,7 @@ var App = {
         var longitude = parseFloat(data.position.longitude);
         var stationPosition = new google.maps.LatLng(latitude, longitude);
         var mapCenter = new google.maps.LatLng(0, longitude);
+        App.geocoder = new google.maps.Geocoder();
 
         var options = {
             styles: styles,
@@ -110,6 +112,7 @@ var App = {
                     var newLatLng = new google.maps.LatLng(latitude, longitude);
                     App.stationMarker.setPosition(newLatLng);
                     App.updateRightPanel(data);
+                    App.updateTicker(data);
                 } else {
                     App.initializeMap(data);
                     var interval = 1000 * 5; // where X is your every X seconds
@@ -117,10 +120,30 @@ var App = {
 
                     App.mapInitialized = true;
                     App.updateRightPanel(data);
+                    App.updateTicker(data);
                 }
 
             }
         });
+    },
+
+    updateTicker: function(data) {
+        var timestamp = Math.round(+new Date()/1000);
+        if(App.tickerLastUpdated == false || App.tickerLastUpdated > timestamp + 60) {
+            App.tickerLastUpdated = timestamp;
+            var latLng = new google.maps.LatLng(data.position.latitude, data.position.longitude);
+            App.geocoder.geocode({'latLng': latLng}, function(results, status) {
+            if (status == google.maps.GeocoderStatus.OK) {
+              if(results[0]) {
+                var country = results[0].formatted_address;
+
+                // ToDo: display info
+
+              }
+            }
+            });
+        }
+
     },
 
     updateRightPanel: function (data) {
@@ -185,6 +208,7 @@ var App = {
             }
         });
 
+        $('#ticker-news').marquee();
         $('[data-toggle="tooltip"]').tooltip();
         $('[data-toggle="popover"]').popover();
     });
