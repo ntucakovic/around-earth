@@ -4,6 +4,7 @@ var App = {
     stationMarker: null,
     userMarker: null,
     geocoder: null,
+    tickerLastUpdated: false,
     toolbarRightOpen: true,
     mapInitialized: false,
     apiEndpoint: 'http://dev.byteout.com/around-earth/backend/',
@@ -47,9 +48,17 @@ var App = {
 
         App.map = new google.maps.Map(document.getElementById("map"), options);
 
+        var image = {
+            url: 'assets/station-white.png',
+            size: new google.maps.Size(169, 62),
+            origin: new google.maps.Point(0, 0),
+            anchor: new google.maps.Point(40, 22),
+            scaledSize: new google.maps.Size(64, 22)
+        };
+
         App.stationMarker = new google.maps.Marker({
             position: stationPosition,
-            icon: 'assets/station-white.png',
+            icon: image,
             map: App.map
         });
 
@@ -136,7 +145,7 @@ var App = {
             if (status == google.maps.GeocoderStatus.OK) {
               if(results[0]) {
                 var country = results[0].formatted_address;
-
+                console.log(country);
                 // ToDo: display info
 
               }
