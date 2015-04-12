@@ -42,14 +42,14 @@ var App = {
             mapTypeId: google.maps.MapTypeId.ROADMAP,
             disableDefaultUI: true,
             minZoom: 2,
-            backgroundColor: '#1D252A',
+            backgroundColor: '#1D252A', // map's BG color
         };
 
         App.map = new google.maps.Map(document.getElementById("map"), options);
 
         App.stationMarker = new google.maps.Marker({
             position: stationPosition,
-            icon: 'assets/station.png',
+            icon: 'assets/station-white.png',
             map: App.map
         });
 
@@ -65,8 +65,8 @@ var App = {
         var orbitPath = new google.maps.Polyline({
             path: orbit,
             geodesic: false,
-            strokeColor: '#B8F0B8',
-            strokeOpacity: 0.8,
+            strokeColor: '#ffffff', // orbitPath color
+            strokeOpacity: 0.6,
             strokeWeight: 3
         });
 
@@ -75,7 +75,7 @@ var App = {
         var userPosition = new google.maps.LatLng(App.userPosition.latitude, App.userPosition.longitude);
         App.userMarker = new google.maps.Marker({
             position: userPosition,
-            // icon: 'assets/station.png',
+            icon: 'assets/location.png',
             draggable: true,
             map: App.map
         });
@@ -208,7 +208,6 @@ var App = {
             }
         });
 
-        $('#ticker-news').marquee();
         $('[data-toggle="tooltip"]').tooltip();
         $('[data-toggle="popover"]').popover();
     });

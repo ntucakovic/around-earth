@@ -21,7 +21,7 @@ var styles = [
     featureType: 'water',
     elementType: 'geometry.fill',
     stylers: [
-      { color: '#002F4C' }
+      { color: '#3646a7' } // dark blue
     ]
   },
   {
@@ -29,8 +29,8 @@ var styles = [
     elementType: 'geometry',
     stylers: [
       {
-        color: '#456A87',
-        hue: '#B8F0B8',
+        color: '#4757bd', // lighter color on map
+        //hue: '#00FFFF',
       }
     ]
   },
