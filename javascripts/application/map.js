@@ -52,7 +52,7 @@ var App = {
             url: 'assets/station-white.png',
             size: new google.maps.Size(169, 62),
             origin: new google.maps.Point(0, 0),
-            anchor: new google.maps.Point(40, 22),
+            anchor: new google.maps.Point(32, 11),
             scaledSize: new google.maps.Size(64, 22)
         };
 
@@ -81,10 +81,17 @@ var App = {
 
         orbitPath.setMap(App.map);
 
+        var locationImg = {
+            url: 'assets/location.png',
+            size: new google.maps.Size(81, 81),
+            origin: new google.maps.Point(0, 0),
+            anchor: new google.maps.Point(40, 55),
+        };
+
         var userPosition = new google.maps.LatLng(App.userPosition.latitude, App.userPosition.longitude);
         App.userMarker = new google.maps.Marker({
             position: userPosition,
-            icon: 'assets/location.png',
+            icon: locationImg,
             draggable: true,
             map: App.map
         });
