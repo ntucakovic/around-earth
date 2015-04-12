@@ -1,203 +1,65 @@
-/* line 1, ../sass/main-view.scss */
-html,
-body {
-  min-height: 100%;
-  height: 100%;
-}
+/*
+Error: Undefined variable: "$screen-xs-max".
+        on line 192 of C:/Program Files (x86)/Ampps/www/nasa/sass/main-view.scss
 
-/* line 7, ../sass/main-view.scss */
-body {
-  padding-top: 50px;
-}
+187:     left: -25px;
+188: }
+189: 
+190: }
+191: 
+192: @media (max-width: $screen-xs-max) {
+193:   #user-view-compass,
+194:   #user-view-elevation {
+195:     display: block;
+196:     margin: 0 auto;
+197:   }
 
-/* line 11, ../sass/main-view.scss */
-body {
-  margin: 0;
-  overflow: hidden;
-}
-
-/* line 16, ../sass/main-view.scss */
-.navbar.navbar-fixed-top {
-  /* @include box-shadow(0 1px 2px rgba(0, 0, 0, 0.6)); */
-}
-
-/* line 20, ../sass/main-view.scss */
-.container-fluid {
-  position: relative;
-}
-
-/* line 24, ../sass/main-view.scss */
-#map {
-  width: 100%;
-}
-
-/* line 28, ../sass/main-view.scss */
-.container-fluid,
-.row,
-#map {
-  height: 100%;
-}
-
-/* line 34, ../sass/main-view.scss */
-.sidebar-toggle {
-  display: block;
-  border-top: 21px solid transparent;
-  border-bottom: 20px solid transparent;
-  border-right: 30px solid #D2D2D2;
-}
-
-/* line 41, ../sass/main-view.scss */
-.sidebar-toggle--right {
-  position: absolute;
-  left: -30px;
-  top: 20px;
-}
-
-/* line 47, ../sass/main-view.scss */
-.navbar-message {
-  margin-right: 15px;
-}
-
-/* line 51, ../sass/main-view.scss */
-.icon-heart {
-  color: tomato;
-}
-
-/* line 55, ../sass/main-view.scss */
-.sidebar {
-  background-color: #f9f9f9;
-}
-
-/* line 59, ../sass/main-view.scss */
-.sidebar--right {
-  position: absolute;
-  top: 0;
-  height: 100%;
-  /* @include box-shadow(-1px 0px 1px rgba(0, 0, 0, 0.6)); */
-}
-
-/* line 66, ../sass/main-view.scss */
-.sidebar--right.active {
-  right: 0;
-}
-
-/* line 70, ../sass/main-view.scss */
-.sidebar__inner {
-  height: 100%;
-  overflow: auto;
-}
-
-/* line 75, ../sass/main-view.scss */
-#user-view-compass {
-  position: relative;
-  color: #B8F0B8;
-  height: 110px;
-  width: 110px;
-  display: inline-block;
-}
-/* line 82, ../sass/main-view.scss */
-#user-view-compass #station {
-  transform-origin: 7px 47px;
-  transform: rotate(7deg);
-  position: absolute;
-  left: 35px;
-  top: -8px;
-  width: 0;
-  height: 0;
-  border-left: 7px solid transparent;
-  border-right: 7px solid transparent;
-  border-bottom: 7px solid #B8F0B8;
-}
-/* line 95, ../sass/main-view.scss */
-#user-view-compass #compass-circle {
-  background-color: #002F4C;
-  border: 10px solid #456A87;
-  width: 100px;
-  height: 100px;
-  position: relative;
-  border-radius: 50px;
-}
-/* line 104, ../sass/main-view.scss */
-#user-view-compass #label-azimuth {
-  position: absolute;
-  top: 26px;
-  width: 45px;
-  left: 22px;
-  font-size: 1.5em;
-  text-align: center;
-}
-/* line 113, ../sass/main-view.scss */
-#user-view-compass .north {
-  font-family: Times New Romain;
-  position: absolute;
-  left: 37px;
-}
-/* line 119, ../sass/main-view.scss */
-#user-view-compass .south {
-  font-family: Times New Romain;
-  position: absolute;
-  left: 37px;
-  bottom: -8px;
-}
-/* line 126, ../sass/main-view.scss */
-#user-view-compass .east {
-  font-family: Times New Romain;
-  position: absolute;
-  right: 3px;
-  top: 32px;
-}
-/* line 133, ../sass/main-view.scss */
-#user-view-compass .west {
-  font-family: Times New Romain;
-  position: absolute;
-  top: 32px;
-  left: 3px;
-}
-
-/* line 142, ../sass/main-view.scss */
-#user-view-elevation {
-  position: relative;
-  display: inline-block;
-  top: -116px;
-  left: 57px;
-}
-/* line 148, ../sass/main-view.scss */
-#user-view-elevation #label-elvation {
-  color: #B8F0B8;
-  position: absolute;
-  top: 14px;
-  width: 41px;
-  left: 8px;
-  font-size: 1.5em;
-  text-align: center;
-}
-/* line 158, ../sass/main-view.scss */
-#user-view-elevation #circle {
-  height: 55px;
-  width: 55px;
-  background: #002F4C;
-  border-radius: 55px;
-  position: absolute;
-  top: 27px;
-  z-index: 99999999;
-  position: absolute;
-}
-/* line 169, ../sass/main-view.scss */
-#user-view-elevation svg {
-  margin-left: 27px;
-  z-index: 10;
-  position: absolute;
-}
-/* line 175, ../sass/main-view.scss */
-#user-view-elevation #arcs div {
-  border: 20px solid #456A87;
-  display: inline-block;
-  min-width: -5em;
-  min-height: 108px;
-  padding: 32px;
-  border-radius: 60%;
-  border-top-color: transparent;
-  border-bottom-color: transparent;
-  position: absolute;
-  left: -25px;
-}
+Backtrace:
+C:/Program Files (x86)/Ampps/www/nasa/sass/main-view.scss:192
+c:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/sass-3.4.10/lib/sass/script/tree/variable.rb:49:in `_perform'
+c:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/sass-3.4.10/lib/sass/script/tree/node.rb:50:in `perform'
+c:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/sass-3.4.10/lib/sass/tree/visitors/perform.rb:536:in `block in run_interp_no_strip'
+c:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/sass-3.4.10/lib/sass/tree/visitors/perform.rb:534:in `map'
+c:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/sass-3.4.10/lib/sass/tree/visitors/perform.rb:534:in `run_interp_no_strip'
+c:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/sass-3.4.10/lib/sass/tree/visitors/perform.rb:541:in `run_interp'
+c:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/sass-3.4.10/lib/sass/tree/visitors/perform.rb:509:in `visit_media'
+c:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/sass-3.4.10/lib/sass/tree/visitors/base.rb:36:in `visit'
+c:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/sass-3.4.10/lib/sass/tree/visitors/perform.rb:158:in `block in visit'
+c:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/sass-3.4.10/lib/sass/stack.rb:79:in `block in with_base'
+c:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/sass-3.4.10/lib/sass/stack.rb:115:in `with_frame'
+c:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/sass-3.4.10/lib/sass/stack.rb:79:in `with_base'
+c:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/sass-3.4.10/lib/sass/tree/visitors/perform.rb:158:in `visit'
+c:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/sass-3.4.10/lib/sass/tree/visitors/base.rb:52:in `block in visit_children'
+c:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/sass-3.4.10/lib/sass/tree/visitors/base.rb:52:in `map'
+c:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/sass-3.4.10/lib/sass/tree/visitors/base.rb:52:in `visit_children'
+c:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/sass-3.4.10/lib/sass/tree/visitors/perform.rb:167:in `block in visit_children'
+c:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/sass-3.4.10/lib/sass/tree/visitors/perform.rb:179:in `with_environment'
+c:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/sass-3.4.10/lib/sass/tree/visitors/perform.rb:166:in `visit_children'
+c:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/sass-3.4.10/lib/sass/tree/visitors/base.rb:36:in `block in visit'
+c:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/sass-3.4.10/lib/sass/tree/visitors/perform.rb:186:in `visit_root'
+c:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/sass-3.4.10/lib/sass/tree/visitors/base.rb:36:in `visit'
+c:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/sass-3.4.10/lib/sass/tree/visitors/perform.rb:157:in `visit'
+c:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/sass-3.4.10/lib/sass/tree/visitors/perform.rb:8:in `visit'
+c:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/sass-3.4.10/lib/sass/tree/root_node.rb:36:in `css_tree'
+c:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/sass-3.4.10/lib/sass/tree/root_node.rb:20:in `render'
+c:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/sass-3.4.10/lib/sass/engine.rb:268:in `render'
+c:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/compass-import-once-1.0.5/lib/compass/import-once/engine.rb:17:in `block in render'
+c:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/compass-import-once-1.0.5/lib/compass/import-once/engine.rb:29:in `with_import_scope'
+c:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/compass-import-once-1.0.5/lib/compass/import-once/engine.rb:16:in `render'
+c:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/sass-3.4.10/lib/sass/plugin/compiler.rb:492:in `update_stylesheet'
+c:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/sass-3.4.10/lib/sass/plugin/compiler.rb:215:in `block in update_stylesheets'
+c:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/sass-3.4.10/lib/sass/plugin/compiler.rb:209:in `each'
+c:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/sass-3.4.10/lib/sass/plugin/compiler.rb:209:in `update_stylesheets'
+c:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/sass-3.4.10/lib/sass/plugin/compiler.rb:470:in `on_file_changed'
+c:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/sass-3.4.10/lib/sass/plugin/compiler.rb:328:in `block in watch'
+c:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/sass-3.4.10/vendor/listen/lib/listen/listener.rb:252:in `call'
+c:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/sass-3.4.10/vendor/listen/lib/listen/listener.rb:252:in `on_change'
+c:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/sass-3.4.10/vendor/listen/lib/listen/listener.rb:290:in `block in initialize_adapter'
+c:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/sass-3.4.10/vendor/listen/lib/listen/adapters/polling.rb:48:in `call'
+c:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/sass-3.4.10/vendor/listen/lib/listen/adapters/polling.rb:48:in `poll_changed_directories'
+c:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/sass-3.4.10/vendor/listen/lib/listen/adapter.rb:299:in `block in start_poller'
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Error: Undefined variable: \"$screen-xs-max\".\A         on line 192 of C:/Program Files (x86)/Ampps/www/nasa/sass/main-view.scss\A \A 187:     left: -25px;\A 188: }\A 189: \A 190: }\A 191: \A 192: @media (max-width: $screen-xs-max) {\A 193:   #user-view-compass,\A 194:   #user-view-elevation {\A 195:     display: block;\A 196:     margin: 0 auto;\A 197:   }"; }

@@ -373,8 +373,8 @@ $icon-font-path: if($bootstrap-sass-asset-helper, "bootstrap/fonts/", "../fonts/
 
 // Inverted navbar
 // Reset inverted navbar basics
-// $navbar-inverse-color:                      lighten($gray-light, 15%)
-// $navbar-inverse-bg:                         #222
+// $navbar-inverse-color:                         #303f9f;
+$navbar-inverse-bg:                         #303f9f
 // $navbar-inverse-border:                     darken($navbar-inverse-bg, 10%)
 
 // Inverted navbar links
