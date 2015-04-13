@@ -8,7 +8,7 @@ from datetime import datetime, timedelta
 import time
 import calendar
 
-satellite = float(sys.argv[1])
+satellite = sys.argv[1]
 userLat = float(sys.argv[2])
 userLng = float(sys.argv[3])
 userAlt = float(sys.argv[4])
@@ -35,7 +35,7 @@ data['user_view']['azimuth'] = az
 data['user_view']['elevation'] = el
 
 data['timestamp'] = timestamp
-date['satellite'] = satellite
+data['satellite'] = satellite
 
 data['tle'] = {};
 data['tle']['arg_perigee'] = orb.tle.arg_perigee
