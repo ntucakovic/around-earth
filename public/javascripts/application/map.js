@@ -9,6 +9,7 @@ var App = {
     mapInitialized: false,
     apiEndpoint: 'http://dev.byteout.com/around-earth/backend/',
     trackSatellite: 'ISS (ZARYA)',
+    orbitLine: null,
 
     toggleSidebar: function () {
         var $sidebar = $('#toolbar-right'),
@@ -63,24 +64,7 @@ var App = {
             map: App.map
         });
 
-        var orbit = [];
-        for (i in data.orbit) {
-            var latitude = parseFloat(data.orbit[i].latitude);
-            var longitude = parseFloat(data.orbit[i].longitude);
-
-            var point = new google.maps.LatLng(latitude, longitude);
-            orbit.push(point);
-        }
-
-        var orbitPath = new google.maps.Polyline({
-            path: orbit,
-            geodesic: false,
-            strokeColor: '#ffffff', // orbitPath color
-            strokeOpacity: 0.6,
-            strokeWeight: 3
-        });
-
-        orbitPath.setMap(App.map);
+        App.drawOrbit(data);
 
         var locationImg = {
             url: 'public/assets/location.png',
@@ -103,6 +87,31 @@ var App = {
         });
 
         $('#label-satellite').html(data.satellite);
+    },
+
+    drawOrbit: function(data){
+        var orbit = [];
+        for (i in data.orbit) {
+            var latitude = parseFloat(data.orbit[i].latitude);
+            var longitude = parseFloat(data.orbit[i].longitude);
+
+            var point = new google.maps.LatLng(latitude, longitude);
+            orbit.push(point);
+        }
+
+        if(App.orbitLine) {
+            App.orbitLine.setMap(null);
+        }
+
+        App.orbitLine = new google.maps.Polyline({
+            path: orbit,
+            geodesic: false,
+            strokeColor: '#ffffff', // orbitPath color
+            strokeOpacity: 0.6,
+            strokeWeight: 3
+        });
+
+        App.orbitLine.setMap(App.map);
     },
 
     updateStationPosition: function (position) {
@@ -131,17 +140,17 @@ var App = {
                 if (App.mapInitialized) {
                     var newLatLng = new google.maps.LatLng(latitude, longitude);
                     App.stationMarker.setPosition(newLatLng);
-                    App.updateRightPanel(data);
-                    App.updateTicker(data);
                 } else {
                     App.initializeMap(data);
                     var interval = 1000 * 5; // where X is your every X seconds
                     setInterval(App.updateStationPosition, interval);
 
                     App.mapInitialized = true;
-                    App.updateRightPanel(data);
-                    App.updateTicker(data);
                 }
+
+                App.updateRightPanel(data);
+                App.updateTicker(data);
+                App.drawOrbit(data);
 
             }
         });
@@ -179,6 +188,8 @@ var App = {
         $('#label-ma').html(data.tle.mean_anomaly);
         $('#label-drag').html(data.tle.bstar);
         $('#label-satellite').html(data.satellite);
+        var periodMins = parseInt(data.tle.orbit_time / 60);
+        $('#label-period').html('~' + periodMins + ' min');
 
         var compass_rotation = data.user_view.azimuth;
         var elevation = data.user_view.elevation * -1;
@@ -240,6 +251,11 @@ var App = {
 
         $('#select-satellite').change(function(){
             App.trackSatellite = $(this).val();
+
+
+
+
+
         });
     });
 })(jQuery)
