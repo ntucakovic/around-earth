@@ -49,7 +49,7 @@ var App = {
         App.map = new google.maps.Map(document.getElementById("map"), options);
 
         var image = {
-            url: 'assets/station-white.png',
+            url: 'public/assets/station-white.png',
             size: new google.maps.Size(169, 62),
             origin: new google.maps.Point(0, 0),
             anchor: new google.maps.Point(32, 11),
@@ -82,7 +82,7 @@ var App = {
         orbitPath.setMap(App.map);
 
         var locationImg = {
-            url: 'assets/location.png',
+            url: 'public/assets/location.png',
             size: new google.maps.Size(81, 81),
             origin: new google.maps.Point(0, 0),
             anchor: new google.maps.Point(40, 55),
