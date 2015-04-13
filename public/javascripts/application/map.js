@@ -160,7 +160,7 @@ var App = {
                 App.updateRightPanel(data);
                 App.updateTicker(data);
                 App.drawOrbit(data);
-
+                App.updateAltitudeChart(data);
             }
         });
     },
@@ -305,11 +305,6 @@ var App = {
 
         $('#select-satellite').change(function(){
             App.trackSatellite = $(this).val();
-
-
-
-
-
         });
     });
 })(jQuery)
