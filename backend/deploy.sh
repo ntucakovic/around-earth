@@ -17,3 +17,6 @@
 
 # install pyorbital
 # pip install pyorbital
+
+#install pyephem
+# pip install pyephem

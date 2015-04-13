@@ -221,6 +221,12 @@ var App = {
         }
 
         $('#altitude-chart').highcharts({
+            title:{
+                text:'',
+                style: {
+                    display: 'none'
+                }
+            },
             xAxis: {
                 categories: categories,
                 labels: {

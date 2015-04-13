@@ -22,9 +22,12 @@ $twig->addFilter('var_dump', new Twig_Filter_Function('var_dump'));
 // load template
 $template = $twig->loadTemplate('index.html.twig');
 
+$satellites = get_satellites();
+
 // set template variables
 // render template
 echo $template->render(array(
-  'satellites' => get_satellites(),
+  'satellites' => $satellites,
+  'satellite_num' => count($satellites['stations']),
 ));
 

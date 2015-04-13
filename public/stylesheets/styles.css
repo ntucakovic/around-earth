@@ -8887,3 +8887,9 @@ body {
 .select-satellite-wrapper {
   padding: 8px 13px;
 }
+
+/* line 221, ../../sass/main-view.scss */
+.satellite-num {
+  color: #fff;
+  padding-left: 15px;
+}
