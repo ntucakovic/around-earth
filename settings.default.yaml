@@ -1,0 +1,5 @@
+database:
+  host: 'dev.byteout.com'
+  username: 'test'
+  password: 'test'
+

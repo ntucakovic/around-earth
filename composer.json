@@ -34,7 +34,9 @@
     "require": {
       "twig/twig": "*",
       "symfony/dom-crawler": "*",
-      "symfony/css-selector": "*"
+      "symfony/css-selector": "*",
+      "guzzle/guzzle": "*",
+      "symfony/event-dispatcher": "*"
     },
     "suggest": {
 

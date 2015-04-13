@@ -2,3 +2,4 @@
 .idea
 backend/stations.txt
 vendor
+settings.yaml

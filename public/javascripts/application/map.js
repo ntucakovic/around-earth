@@ -10,6 +10,7 @@ var App = {
     apiEndpoint: 'http://dev.byteout.com/around-earth/backend/',
     trackSatellite: 'ISS (ZARYA)',
     orbitLine: null,
+    dayNightTerminator: null,
 
     toggleSidebar: function () {
         var $sidebar = $('#toolbar-right'),
@@ -49,6 +50,12 @@ var App = {
         };
 
         App.map = new google.maps.Map(document.getElementById("map"), options);
+
+        App.dayNightTerminator = new DayNightOverlay({
+            map: App.map,
+            fillColor: 'rgba(0,0,0,0.5)',
+            date: new Date(Date.UTC())
+        });
 
         var image = {
             url: 'public/assets/station-white.png',
@@ -140,6 +147,7 @@ var App = {
                 if (App.mapInitialized) {
                     var newLatLng = new google.maps.LatLng(latitude, longitude);
                     App.stationMarker.setPosition(newLatLng);
+                    App.dayNightTerminator.setDate(Date.UTC());
                 } else {
                     App.initializeMap(data);
                     var interval = 1000 * 5; // where X is your every X seconds
@@ -158,7 +166,7 @@ var App = {
 
     updateTicker: function(data) {
         var timestamp = Math.round(+new Date()/1000);
-        if(App.tickerLastUpdated == false || App.tickerLastUpdated > timestamp + 60) {
+        // if(App.tickerLastUpdated == false || App.tickerLastUpdated > timestamp + 60) {
             App.tickerLastUpdated = timestamp;
             var latLng = new google.maps.LatLng(data.position.latitude, data.position.longitude);
             App.geocoder.geocode({'latLng': latLng}, function(results, status) {
@@ -171,7 +179,7 @@ var App = {
               }
             }
             });
-        }
+        // }
 
     },
 
