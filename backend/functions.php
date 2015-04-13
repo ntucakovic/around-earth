@@ -4,8 +4,7 @@ function get_satellites() {
   $memcache = new Memcache;
   $memcache->connect('localhost', 11211) or die ("Could not connect");
 
-
-  $cached = $memcache->get('satellites')
+  $cached = $memcache->get('satellites');
   if($cached) {
     $rval = $cached;
   } else {
