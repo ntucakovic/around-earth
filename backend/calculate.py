@@ -1,10 +1,10 @@
 import sys
 import json
+import ephem
+import math
 from pyorbital import tlefile
 from pyorbital.orbital import Orbital
 from datetime import datetime, timedelta
-
-
 import time
 import calendar
 
@@ -19,7 +19,7 @@ orb = Orbital(satellite, 'stations.txt')
 
 now = datetime.utcnow()
 # Get normalized position and velocity of the satellite:
-orb.get_position(now)
+pos, vel = orb.get_position(now)
 # Get longitude, latitude and altitude of the satellite:
 position = orb.get_lonlatalt(now)
 
@@ -67,16 +67,18 @@ data['position'] = {}
 data['position']['longitude'] = position[0]
 data['position']['latitude'] = position[1]
 data['position']['altitude'] = position[2]
+# data['position']['velocity'] = vel
 
+earth_mass = 5.972E24
+g_constant = 6.67384E-11
+orbital_radius = ephem.earth_radius + position[2]
+velocity = math.sqrt(g_constant * earth_mass / orbital_radius);
+data['position']['velocity'] = velocity
 
 # calculate orbit line
-
 halforbit = data['tle']['orbit_time'] / 2
 
 start = timestamp - halforbit
-
-
-
 from_date = now - timedelta(seconds=halforbit)
 to_date = now + timedelta(seconds=halforbit)
 
@@ -84,8 +86,6 @@ to_date = now + timedelta(seconds=halforbit)
 # data['2'] = to_date.strftime("%Y-%m-%d %H:%M:%S")
 
 delta=timedelta(minutes=1)
-
-
 lineArray = []
 while from_date <= to_date:
 
@@ -94,6 +94,7 @@ while from_date <= to_date:
     onePoint['timestamp'] = start
     onePoint['longitude'] = onePointPosition[0]
     onePoint['latitude'] = onePointPosition[1]
+    onePoint['altitude'] = onePointPosition[2]
     lineArray.append(onePoint);
 
     from_date = from_date + delta

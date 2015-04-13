@@ -38,6 +38,7 @@ var App = {
         var stationPosition = new google.maps.LatLng(latitude, longitude);
         var mapCenter = new google.maps.LatLng(0, longitude);
         App.geocoder = new google.maps.Geocoder();
+        App.updateAltitudeChart(data);
 
         var options = {
             styles: styles,
@@ -166,27 +167,25 @@ var App = {
 
     updateTicker: function(data) {
         var timestamp = Math.round(+new Date()/1000);
-        // if(App.tickerLastUpdated == false || App.tickerLastUpdated > timestamp + 60) {
+        if(App.tickerLastUpdated == false || timestamp > App.tickerLastUpdated + 60) {
             App.tickerLastUpdated = timestamp;
             var latLng = new google.maps.LatLng(data.position.latitude, data.position.longitude);
             App.geocoder.geocode({'latLng': latLng}, function(results, status) {
             if (status == google.maps.GeocoderStatus.OK) {
               if(results[0]) {
-                var country = results[0].formatted_address;
-                console.log(country);
-                // ToDo: display info
-
+                $('#label-passing-over').html(results[0].formatted_address);
+              } else {
+                $('#label-passing-over').html('Ocean');
               }
             }
             });
-        // }
-
+        }
     },
 
     updateRightPanel: function (data) {
         $('#label-latitude').html(parseFloat(data.position.latitude).toFixed(5));
         $('#label-longitude').html(parseFloat(data.position.longitude).toFixed(5));
-        $('#label-altitude').html(parseFloat(data.position.altitude).toFixed(5));
+        $('#label-altitude').html(parseFloat(data.position.altitude).toFixed(2) + ' km');
         $('#label-epoch').html(data.tle.epoch_year + data.tle.epoch_day);
         $('#label-raan').html(data.tle.right_ascension);
         $('#label-argp').html(data.tle.arg_perigee);
@@ -207,6 +206,47 @@ var App = {
         $('#user-view-compass #station').css('transform', 'rotate(' + compass_rotation + 'deg)');
         $('#user-view-elevation #elevation').attr('transform', 'rotate(' + elevation + ' 0 55)');
     },
+
+    updateAltitudeChart: function(data) {
+        var altitudes = [];
+        var categories = [];
+        for(var i in data.orbit) {
+            altitudes.push(parseFloat(data.orbit[i].altitude.toFixed(2)));
+            var date = new Date(data.orbit[i].timestamp * 1000);
+            var hours = date.getHours();
+            var minutes = "0" + date.getMinutes();
+            var seconds = "0" + date.getSeconds();
+
+            categories.push(date.toUTCString());
+        }
+
+        $('#altitude-chart').highcharts({
+            xAxis: {
+                categories: categories,
+                labels: {
+                   enabled: false
+               },
+            },
+            yAxis: {
+                title: {
+                    text: 'Altitude (km)'
+                },
+                plotLines: [{
+                    value: 0,
+                    width: 1,
+                    color: '#808080'
+                }]
+            },
+            tooltip: {
+                valueSuffix: ' km'
+            },
+            series: [{
+                name: data.satellite,
+                data: altitudes
+            }]
+        });
+    }
+
 };
 
 (function ($) {

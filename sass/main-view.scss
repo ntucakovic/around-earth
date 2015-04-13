@@ -79,6 +79,8 @@ body {
   height: 110px;
   width: 110px;
   display: inline-block;
+  left: 20px;
+  top: 6px;
 
   #station {
     transform-origin: 7px 47px;
@@ -145,7 +147,7 @@ body {
   display: inline-block;
   width: 55px;
   height: 110px;
-  margin-left: 30px;
+  margin-left: 60px;
 
   #label-elvation {
     color: #AFB5DC;
