@@ -201,3 +201,17 @@ body {
     top: 0;
   }
 }
+
+.multiselect-container {
+  input {
+    display: none;
+  }
+}
+
+.multiselect-container > li > a > label {
+  padding: 3px 20px 3px 0px;
+}
+
+.select-satellite-wrapper {
+  padding: 8px 13px;
+}

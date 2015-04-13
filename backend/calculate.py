@@ -8,9 +8,14 @@ from datetime import datetime, timedelta
 import time
 import calendar
 
-tle = tlefile.read('ISS (ZARYA)', 'stations.txt')
+satellite = float(sys.argv[1])
+userLat = float(sys.argv[2])
+userLng = float(sys.argv[3])
+userAlt = float(sys.argv[4])
 
-orb = Orbital('ISS (ZARYA)', 'stations.txt')
+tle = tlefile.read(satellite, 'stations.txt')
+
+orb = Orbital(satellite, 'stations.txt')
 
 now = datetime.utcnow()
 # Get normalized position and velocity of the satellite:
@@ -21,9 +26,7 @@ position = orb.get_lonlatalt(now)
 data = {}
 
 timestamp = calendar.timegm(now.utctimetuple())
-userLat = float(sys.argv[1])
-userLng = float(sys.argv[2])
-userAlt = float(sys.argv[3])
+
 
 az, el = orb.get_observer_look(now, userLng, userLat, userAlt);
 
@@ -32,6 +35,7 @@ data['user_view']['azimuth'] = az
 data['user_view']['elevation'] = el
 
 data['timestamp'] = timestamp
+date['satellite'] = satellite
 
 data['tle'] = {};
 data['tle']['arg_perigee'] = orb.tle.arg_perigee

@@ -8,6 +8,7 @@ var App = {
     toolbarRightOpen: true,
     mapInitialized: false,
     apiEndpoint: 'http://dev.byteout.com/around-earth/backend/',
+    trackSatellite: 'ISS (ZARYA)',
 
     toggleSidebar: function () {
         var $sidebar = $('#toolbar-right'),
@@ -100,6 +101,8 @@ var App = {
             App.userPosition.latitude = event.latLng.lat();
             App.userPosition.longitude = event.latLng.lng();
         });
+
+        $('#label-satellite').html(data.satellite);
     },
 
     updateStationPosition: function (position) {
@@ -113,6 +116,7 @@ var App = {
 
         $.ajax({
             data: {
+                satellite: App.trackSatellite,
                 user_latitude: position.latitude,
                 user_longitude: position.longitude,
                 user_altitude: position.altitude
@@ -174,6 +178,7 @@ var App = {
         $('#label-mean-motion').html(data.tle.mean_motion);
         $('#label-ma').html(data.tle.mean_anomaly);
         $('#label-drag').html(data.tle.bstar);
+        $('#label-satellite').html(data.satellite);
 
         var compass_rotation = data.user_view.azimuth;
         var elevation = data.user_view.elevation * -1;
@@ -224,7 +229,17 @@ var App = {
             }
         });
 
+        $('#select-satellite').multiselect({
+            maxHeight: 300,
+            buttonWidth: 200,
+            enableFiltering: true,
+            enableCaseInsensitiveFiltering: true
+        });
         $('[data-toggle="tooltip"]').tooltip();
         $('[data-toggle="popover"]').popover();
+
+        $('#select-satellite').change(function(){
+            App.trackSatellite = $(this).val();
+        });
     });
 })(jQuery)
