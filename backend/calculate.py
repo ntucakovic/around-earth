@@ -12,12 +12,12 @@ satellite = sys.argv[1]
 userLat = float(sys.argv[2])
 userLng = float(sys.argv[3])
 userAlt = float(sys.argv[4])
-line1 = float(sys.argv[5])
-line2 = float(sys.argv[6])
+line1 = sys.argv[5]
+line2 = sys.argv[6]
 
-tle = tlefile.read(satellite, line1, line2)
+tle = tlefile.read(satellite, None, line1, line2)
 
-orb = Orbital(satellite, line1, line2)
+orb = Orbital(satellite, None, line1, line2)
 
 now = datetime.utcnow()
 # Get normalized position and velocity of the satellite:

@@ -2,7 +2,7 @@
 
 class TleSource
 {
-	const tleFile = 'stations.txt';
+	const tleFile = '/backend/stations.txt';
 	const cacheLifeTime = 300;
 	const memcacheHost = 'localhost';
 	const memcachePort = 11211;
@@ -28,7 +28,7 @@ class TleSource
 
 		foreach($tleList as $tle) {
 			if(strcmp($satellite, $tleList['name'])) {
-				return $tleList;
+				return $tle;
 			}
 		}
 
@@ -37,6 +37,7 @@ class TleSource
 
 	public function getSatelliteList() {
 		$cached = $this->memcache->get('satelliteList');
+
 		if($cached) {
 			return $cached;
 		}
@@ -48,7 +49,11 @@ class TleSource
 	}
 
 	public function parseTleFile() {
-		$stations      = file_get_contents(self::tleFile);
+		if(!file_exists(APP_ROOT . self::tleFile)) {
+			throw new Exception('File ' . APP_ROOT . self::tleFile . ' does not exists');
+		}
+
+		$stations      = file_get_contents(APP_ROOT . self::tleFile);
 		$stations      = explode("\n", $stations);
 		$satelliteList = array();
 		$tleList       = array();
@@ -56,7 +61,7 @@ class TleSource
 			$firstChar = substr($station, 0, 1);
 			if(!empty($station) && strcmp($firstChar, '1') && strcmp($firstChar, '2')) {
 				$satelliteList[] = trim($station);
-				$tleList         = array(
+				$tleList[]         = array(
 					'name' => trim($station), 'line1' => trim($stations[$key + 1]), 'line2' => trim($stations[$key + 2]),
 				);
 			}
