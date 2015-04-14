@@ -3,7 +3,7 @@
 define('APP_ROOT', getcwd());
 
 require 'vendor/autoload.php';
-require 'backend/functions.php';
+require 'backend/TleSource.php';
 
 Twig_Autoloader::register();
 
@@ -22,12 +22,15 @@ $twig->addFilter('var_dump', new Twig_Filter_Function('var_dump'));
 // load template
 $template = $twig->loadTemplate('index.html.twig');
 
-$satellites = get_satellites();
+if(!class_exists('Memcache')) {
+    $satelliteList = array('ISS (ZARYA)');
+} else {
+    $tleSource = new TleSource();
+    $satellites = $tleSource->getSatelliteList();
+}
 
-// set template variables
-// render template
 echo $template->render(array(
-  'satellites' => $satellites,
-  'satellite_num' => count($satellites['stations']),
+  'satelliteList' => $satelliteList,
+  'satelliteCount' => count($satelliteList),
 ));
 
