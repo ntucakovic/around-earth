@@ -26,7 +26,7 @@ if(!class_exists('Memcache')) {
     $satelliteList = array('ISS (ZARYA)');
 } else {
     $tleSource = new TleSource();
-    $satellites = $tleSource->getSatelliteList();
+    $satelliteList = $tleSource->getSatelliteList();
 }
 
 echo $template->render(array(
