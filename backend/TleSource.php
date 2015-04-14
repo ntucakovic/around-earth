@@ -9,7 +9,7 @@ class TleSource
 
 	private $memcache;
 
-	public function __constructor() {
+	function __construct($memcache) {
 		$this->memcache = new Memcache;
 		$success        = $this->memcache->connect(self::memcacheHost, self::memcachePort);
 		if(!$success) {
