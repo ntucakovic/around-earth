@@ -266,6 +266,19 @@ var App = {
                 position.longitude = position.coords.longitude;
                 position.altitude = position.coords.altitude ? position.coords.altitude : 0;
 
+                console.log(position);
+
+                App.userPosition = position;
+                App.updateStationPosition(position);
+            }, function(){
+                //user has blocked location
+
+                position = {
+                    latitude: 28.396837,
+                    longitude: -80.605659,
+                    altitude: 0
+                };
+
                 App.userPosition = position;
                 App.updateStationPosition(position);
             });

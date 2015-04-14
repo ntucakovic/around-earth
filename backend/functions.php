@@ -1,6 +1,11 @@
 <?php
 
 function get_satellites() {
+
+  if(!class_exists('Memcache')) {
+      return array('stations' => array('ISS (ZARYA)'));
+  }
+
   $memcache = new Memcache;
   $memcache->connect('localhost', 11211) or die ("Could not connect");
 
