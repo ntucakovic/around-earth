@@ -11,6 +11,11 @@ var App = {
     trackSatellite: 'ISS (ZARYA)',
     orbitLine: null,
     dayNightTerminator: null,
+    defaultPosition: {
+        latitude: 28.396837,
+        longitude: -80.605659,
+        altitude: 0
+    },
 
     toggleSidebar: function () {
         var $sidebar = $('#toolbar-right'),
@@ -266,31 +271,30 @@ var App = {
                 position.longitude = position.coords.longitude;
                 position.altitude = position.coords.altitude ? position.coords.altitude : 0;
 
-                console.log(position);
-
                 App.userPosition = position;
                 App.updateStationPosition(position);
+
+                if(App.userMarker) {
+                    var userPosition = new google.maps.LatLng(position.latitude, position.longitude);
+                    App.userMarker.setPosition(userPosition);
+                }
+
             }, function(){
-                //user has blocked location
-
-                position = {
-                    latitude: 28.396837,
-                    longitude: -80.605659,
-                    altitude: 0
-                };
-
-                App.userPosition = position;
-                App.updateStationPosition(position);
+                App.userPosition = App.defaultPosition;
+                App.updateStationPosition(App.defaultPosition);
+            }, {
+                timeout:10,
+                maximumAge: 75000,
+                timeout: 5000
             });
         } else {
-            position = {
-                latitude: 28.396837,
-                longitude: -80.605659,
-                altitude: 0
-            };
+            App.userPosition = App.defaultPosition;
+            App.updateStationPosition(App.defaultPosition);
+        }
 
-            App.userPosition = position;
-            App.updateStationPosition(position);
+        if(App.mapInitialized == false) {
+            App.userPosition = App.defaultPosition;
+            App.updateStationPosition(App.defaultPosition);
         }
 
         if (App.toolbarRightOpen) {
