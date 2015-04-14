@@ -16,6 +16,7 @@ var App = {
         longitude: -80.605659,
         altitude: 0
     },
+    altitudeChart: null,
 
     toggleSidebar: function () {
         var $sidebar = $('#toolbar-right'),
@@ -43,7 +44,7 @@ var App = {
         var stationPosition = new google.maps.LatLng(latitude, longitude);
         var mapCenter = new google.maps.LatLng(0, longitude);
         App.geocoder = new google.maps.Geocoder();
-        App.updateAltitudeChart(data);
+        App.initAltitudeChart(data);
 
         var options = {
             styles: styles,
@@ -102,7 +103,7 @@ var App = {
         $('#label-satellite').html(data.satellite);
     },
 
-    drawOrbit: function(data){
+    drawOrbit: function (data) {
         var orbit = [];
         for (i in data.orbit) {
             var latitude = parseFloat(data.orbit[i].latitude);
@@ -112,7 +113,7 @@ var App = {
             orbit.push(point);
         }
 
-        if(App.orbitLine) {
+        if (App.orbitLine) {
             App.orbitLine.setMap(null);
         }
 
@@ -170,19 +171,19 @@ var App = {
         });
     },
 
-    updateTicker: function(data) {
-        var timestamp = Math.round(+new Date()/1000);
-        if(App.tickerLastUpdated == false || timestamp > App.tickerLastUpdated + 60) {
+    updateTicker: function (data) {
+        var timestamp = Math.round(+new Date() / 1000);
+        if (App.tickerLastUpdated == false || timestamp > App.tickerLastUpdated + 60) {
             App.tickerLastUpdated = timestamp;
             var latLng = new google.maps.LatLng(data.position.latitude, data.position.longitude);
-            App.geocoder.geocode({'latLng': latLng}, function(results, status) {
-            if (status == google.maps.GeocoderStatus.OK) {
-              if(results[0]) {
-                $('#label-passing-over').html(results[0].formatted_address);
-              } else {
-                $('#label-passing-over').html('Ocean');
-              }
-            }
+            App.geocoder.geocode({'latLng': latLng}, function (results, status) {
+                if (status == google.maps.GeocoderStatus.OK) {
+                    if (results[0]) {
+                        $('#label-passing-over').html(results[0].formatted_address);
+                    } else {
+                        $('#label-passing-over').html('Ocean');
+                    }
+                }
             });
         }
     },
@@ -212,10 +213,10 @@ var App = {
         $('#user-view-elevation #elevation').attr('transform', 'rotate(' + elevation + ' 0 55)');
     },
 
-    updateAltitudeChart: function(data) {
+    initAltitudeChart: function (data) {
         var altitudes = [];
         var categories = [];
-        for(var i in data.orbit) {
+        for (var i in data.orbit) {
             altitudes.push(parseFloat(data.orbit[i].altitude.toFixed(2)));
             var date = new Date(data.orbit[i].timestamp * 1000);
             var hours = date.getHours();
@@ -225,9 +226,9 @@ var App = {
             categories.push(date.toUTCString());
         }
 
-        $('#altitude-chart').highcharts({
-            title:{
-                text:'',
+        App.altitudeChart = $('#altitude-chart').highcharts({
+            title: {
+                text: '',
                 style: {
                     display: 'none'
                 }
@@ -235,8 +236,8 @@ var App = {
             xAxis: {
                 categories: categories,
                 labels: {
-                   enabled: false
-               },
+                    enabled: false
+                }
             },
             yAxis: {
                 title: {
@@ -256,6 +257,26 @@ var App = {
                 data: altitudes
             }]
         });
+    },
+    updateAltitudeChart: function (data) {
+        var altitudes = [];
+        var categories = [];
+        for (var i in data.orbit) {
+            altitudes.push(parseFloat(data.orbit[i].altitude.toFixed(2)));
+            var date = new Date(data.orbit[i].timestamp * 1000);
+            var hours = date.getHours();
+            var minutes = "0" + date.getMinutes();
+            var seconds = "0" + date.getSeconds();
+
+            categories.push(date.toUTCString());
+        }
+        App.altitudeChart.series = altitudes;
+        App.altitudeChart.xAxis = {
+            categories: categories,
+            labels: {
+                enabled: false
+            }
+        }
     }
 
 };
@@ -274,16 +295,16 @@ var App = {
                 App.userPosition = position;
                 App.updateStationPosition(position);
 
-                if(App.userMarker) {
+                if (App.userMarker) {
                     var userPosition = new google.maps.LatLng(position.latitude, position.longitude);
                     App.userMarker.setPosition(userPosition);
                 }
 
-            }, function(){
+            }, function () {
                 App.userPosition = App.defaultPosition;
                 App.updateStationPosition(App.defaultPosition);
             }, {
-                timeout:10,
+                timeout: 10,
                 maximumAge: 75000,
                 timeout: 5000
             });
@@ -292,7 +313,7 @@ var App = {
             App.updateStationPosition(App.defaultPosition);
         }
 
-        if(App.mapInitialized == false) {
+        if (App.mapInitialized == false) {
             App.userPosition = App.defaultPosition;
             App.updateStationPosition(App.defaultPosition);
         }
@@ -320,7 +341,7 @@ var App = {
         $('[data-toggle="tooltip"]').tooltip();
         $('[data-toggle="popover"]').popover();
 
-        $('#select-satellite').change(function(){
+        $('#select-satellite').change(function () {
             App.trackSatellite = $(this).val();
         });
     });
