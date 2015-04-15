@@ -22,12 +22,12 @@ class TleSource
 		if($cached) {
 			$tleList = $cached;
 		} else {
-			$tleList = $this->parseTleFile();
+			$tleList = $this->parseTleFile()['tleList'];
 			$this->memcache->set('tleList', $tleList['tleList'], false, time() + self::cacheLifeTime);
 		}
 
 		foreach($tleList as $tle) {
-			if(strcmp($satellite, $tleList['name'])) {
+			if(strcmp($satellite, $tle['name'])) {
 				return $tle;
 			}
 		}
