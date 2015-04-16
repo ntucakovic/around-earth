@@ -101,6 +101,33 @@ var App = {
         });
 
         $('#label-satellite').html(data.satellite);
+
+
+
+
+        $.ajax({
+            url: 'http://dev.byteout.com/around-earth-dev/backend/request.php',
+            dataType: 'json',
+            success: function(data) {
+
+                var test = App.XYZ2LatLng(data.sun.x, data.sun.y, data.sun.z);
+
+                var pos = new google.maps.LatLng(test.longitude, test.latitude);
+
+                var marker = new google.maps.Marker({
+                    position: pos,
+                    map: App.map
+                });
+
+                App.map.setCenter(pos);
+            }
+        });
+
+
+
+
+
+
     },
 
     drawOrbit: function (data) {
@@ -169,6 +196,37 @@ var App = {
                 App.updateAltitudeChart(data);
             }
         });
+    },
+
+    XYZ2LatLng: function(x, y, z) {
+
+
+
+          var  ecef = new Array(3);
+          var  llh  = new Array(3)
+          var  dtr = Math.PI/180;
+
+          x =  Number(x);
+          y =  Number(y);
+          z =  Number(z);
+
+          sans = " \n";
+
+          ecef[0]  = x;
+          ecef[1]  = y
+          ecef[2]  = z;
+          llh   = xyzllh(ecef);
+
+          latitude = llh[0];
+          longitude= llh[1];
+          hkm      = llh[2];
+          height   = 1000.0 * hkm;
+
+          return {
+              latitude: fformat(latitude, 5),
+              longitude: fformat(longitude, 5),
+              height: fformat(height, 5)
+          }
     },
 
     updateTicker: function (data) {
@@ -344,5 +402,19 @@ var App = {
         $('#select-satellite').change(function () {
             App.trackSatellite = $(this).val();
         });
+
     });
 })(jQuery)
+
+
+function  fformat ( number,dplaces)
+{
+    var    duse,scale,nuse, nnew
+
+    duse  = Math.floor( dplaces )
+    scale = Math.pow( 10, duse )
+    nuse  = scale * number
+    nuse  = Math.round(nuse)
+    nnew  = nuse / scale
+    return ( nnew )
+}
