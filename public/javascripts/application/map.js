@@ -60,7 +60,7 @@ var App = {
 
         App.dayNightTerminator = new DayNightOverlay({
             map: App.map,
-            fillColor: 'rgba(0,0,0,0.5)',
+            fillColor: 'rgba(0,0,0,0.3)',
             date: new Date(Date.UTC())
         });
 
@@ -101,33 +101,6 @@ var App = {
         });
 
         $('#label-satellite').html(data.satellite);
-
-
-
-
-        $.ajax({
-            url: 'http://dev.byteout.com/around-earth-dev/backend/request.php',
-            dataType: 'json',
-            success: function(data) {
-
-                var test = App.XYZ2LatLng(data.sun.x, data.sun.y, data.sun.z);
-
-                var pos = new google.maps.LatLng(test.longitude, test.latitude);
-
-                var marker = new google.maps.Marker({
-                    position: pos,
-                    map: App.map
-                });
-
-                App.map.setCenter(pos);
-            }
-        });
-
-
-
-
-
-
     },
 
     drawOrbit: function (data) {
@@ -198,37 +171,6 @@ var App = {
         });
     },
 
-    XYZ2LatLng: function(x, y, z) {
-
-
-
-          var  ecef = new Array(3);
-          var  llh  = new Array(3)
-          var  dtr = Math.PI/180;
-
-          x =  Number(x);
-          y =  Number(y);
-          z =  Number(z);
-
-          sans = " \n";
-
-          ecef[0]  = x;
-          ecef[1]  = y
-          ecef[2]  = z;
-          llh   = xyzllh(ecef);
-
-          latitude = llh[0];
-          longitude= llh[1];
-          hkm      = llh[2];
-          height   = 1000.0 * hkm;
-
-          return {
-              latitude: fformat(latitude, 5),
-              longitude: fformat(longitude, 5),
-              height: fformat(height, 5)
-          }
-    },
-
     updateTicker: function (data) {
         var timestamp = Math.round(+new Date() / 1000);
         if (App.tickerLastUpdated == false || timestamp > App.tickerLastUpdated + 60) {
@@ -262,6 +204,18 @@ var App = {
         var periodMins = parseInt(data.tle.orbit_time / 60);
         $('#label-period').html('~' + periodMins + ' min');
 
+        var userPosition = App.userMarker.getPosition();
+        var userLat = userPosition.lat();
+        var userLng = userPosition.lat();
+        var satLat = data.position.latitude;
+        var satLng = data.position.longitude;
+
+        console.log(userLat, userLng, satLat, satLng);
+
+        var userLocation = new LatLon(userLat, userLng);
+        var stationLocation = new LatLon(satLat, satLng);
+        var bearing = userLocation.bearingTo(stationLocation);
+
         var compass_rotation = data.user_view.azimuth;
         var elevation = data.user_view.elevation * -1;
 
@@ -290,6 +244,9 @@ var App = {
                 style: {
                     display: 'none'
                 }
+            },
+            credits: {
+                enabled: false
             },
             xAxis: {
                 categories: categories,

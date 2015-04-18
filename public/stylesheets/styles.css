@@ -8902,14 +8902,44 @@ body {
 }
 
 /* line 232, ../../sass/main-view.scss */
+#float-bar {
+  position: absolute;
+  top: 50px;
+  left: 10px;
+  z-index: 9;
+}
+
+/* line 1, ../../sass/telemetry.scss */
 .toolbar--bottom {
   width: 100%;
   position: relative;
   height: 200px;
-  top: -220px;
+  top: -416px;
 }
 
-/* line 239, ../../sass/main-view.scss */
+/* line 8, ../../sass/telemetry.scss */
+#temperature-chart,
+#pressure-chart {
+  height: 180px;
+  width: 230px;
+  display: inline-block;
+}
+
+/* line 15, ../../sass/telemetry.scss */
+#air-chart,
+#water-chart {
+  height: 200px;
+  width: 230px;
+  display: inline-block;
+}
+
+/* line 22, ../../sass/telemetry.scss */
 #voltage-chart {
-  height: 150px;
+  display: inline-block;
+  width: 750px;
+}
+
+/* line 27, ../../sass/telemetry.scss */
+.telemetry-inline {
+  display: inline-block;
 }

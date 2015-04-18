@@ -229,13 +229,9 @@ body {
   padding-left: 15px;
 }
 
-.toolbar--bottom {
-  width: 100%;
-  position: relative;
-  height: 200px;
-  top: -220px;
-}
-
-#voltage-chart {
-  height: 150px;
+#float-bar {
+  position: absolute;
+  top: 50px;
+  left: 10px;
+  z-index: 9;
 }
