@@ -29,6 +29,21 @@ var App = {
             $sidebar.addClass('active').animate({'right': 0}, 200);
             App.toolbarRightOpen = true;
         }
+
+    },
+
+    toggleDashboard: function () {
+        var $dashboard = $('#toolbar-bottom'),
+        height = $dashboard.outerHeight();
+
+        if ($dashboard.is('.active')) {
+            $dashboard.removeClass('active').animate({'bottom': -height}, 300);
+            App.dashboardOpen = false;
+        } else {
+            $dashboard.addClass('active').animate({'bottom': 0}, 200);
+            App.dashboardOpen = true;
+        }
+
     },
 
     repositionToolbarRight: function () {
@@ -338,6 +353,7 @@ var App = {
         }
 
         $('#toolbar-right-toggle').click(App.toggleSidebar);
+        $('#toolbar-bottom-toggle').click(App.toggleDashboard);
 
         $(window).resize(function () {
             if (!App.toolbarRightOpen) {

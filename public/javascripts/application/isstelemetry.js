@@ -44,6 +44,7 @@ Telemetry = {
             }
         },
         chart: {
+            backgroundColor: '#f9f9f9',
             plotBackgroundColor: null,
             plotBorderWidth: null,
             plotShadow: false
@@ -51,7 +52,8 @@ Telemetry = {
     },
     defaultGaugeOptions: {
         chart: {
-            type: 'solidgauge'
+            type: 'solidgauge',
+            backgroundColor: '#f9f9f9',
         },
         title: null,
         pane: {
@@ -146,6 +148,7 @@ Telemetry = {
         Telemetry.voltageChart = jQuery('#voltage-chart').highcharts({
             chart: {
                 type: 'column',
+                backgroundColor: '#f9f9f9',
                 events: {
                     load: function () {
                         var element = this;
