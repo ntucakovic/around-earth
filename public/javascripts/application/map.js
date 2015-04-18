@@ -210,8 +210,6 @@ var App = {
         var satLat = data.position.latitude;
         var satLng = data.position.longitude;
 
-        console.log(userLat, userLng, satLat, satLng);
-
         var userLocation = new LatLon(userLat, userLng);
         var stationLocation = new LatLon(satLat, satLng);
         var bearing = userLocation.bearingTo(stationLocation);

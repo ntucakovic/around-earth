@@ -8,6 +8,9 @@ from datetime import datetime, timedelta
 import time
 import calendar
 
+SIDERAL_DAY_SEC = 86164.0905
+MU = 398600 # Earth standard gravitational parameter
+
 satellite = sys.argv[1]
 userLat = float(sys.argv[2])
 userLng = float(sys.argv[3])
@@ -61,9 +64,11 @@ data['tle']['orbit'] = orb.tle.orbit
 data['tle']['right_ascension'] = orb.tle.right_ascension
 data['tle']['satnumber'] = orb.tle.satnumber
 
-SIDERAL_DAY_SEC = 86164.0905
-
 data['tle']['orbit_time']  =  SIDERAL_DAY_SEC / orb.tle.mean_motion
+
+semi_major_axis = (MU/pow(orb.tle.mean_motion*2*math.pi/(24*3600), 2)) ** (1 / 3.0)
+data['tle']['semi_major_axis'] = semi_major_axis
+data['tle']['semi_minor_axis'] = semi_major_axis * math.sqrt(1 - pow(orb.tle.excentricity, 2))
 
 data['position'] = {}
 data['position']['longitude'] = position[0]

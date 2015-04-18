@@ -205,7 +205,7 @@ Telemetry = {
         Telemetry.cabinPressureGauge = $('#pressure-chart').highcharts(Highcharts.merge(Telemetry.defaultGaugeOptions, {
             yAxis: {
                 min: 0,
-                max: 2000,
+                max: 1125,
                 title: {
                     text: 'Cabin Pressure'
                 }
@@ -260,7 +260,7 @@ Telemetry = {
             },
             yAxis: {
                 min: 0,
-                max: 55,
+                max: 45,
                 title: {
                     text: 'Cabin Temperature'
                 }
