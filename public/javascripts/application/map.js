@@ -1,5 +1,18 @@
 var App = {
-    user: {},
+    user: {
+        position: {
+            latitude: 0,
+            longitude: 0
+        },
+        timezoneOffset: 0,
+        timestamp: function() {
+            return Math.round(new Date());
+        },
+        time: function() {
+            var now = new Date(App.user.timestamp());
+            return now.getFullYear() + '/' + now.getMonth() + '/' + now.getDate() + ' ' + now.getHours() + ':' + now.getMinutes() + ':' + now.getSeconds();
+        }
+    },
     map: null,
     stationMarker: null,
     userMarker: null,
@@ -54,10 +67,26 @@ var App = {
     },
 
     initializeMap: function (data) {
+
+        $.ajax({
+            data: {
+                latitude: App.userPosition.latitude,
+                longitude: App.userPosition.longitude,
+                timedate: App.user.time()
+            },
+            url: App.apiEndpoint + 'request.php',
+            success: function(data) {
+                console.log(data);
+            }
+        });
+
+        console.log(App.user.time())
+
+
         var latitude = parseFloat(data.position.latitude);
         var longitude = parseFloat(data.position.longitude);
         var stationPosition = new google.maps.LatLng(latitude, longitude);
-        var mapCenter = new google.maps.LatLng(0, longitude);
+        var mapCenter = new google.maps.LatLng(latitude, longitude);
         App.geocoder = new google.maps.Geocoder();
         App.initAltitudeChart(data);
 
